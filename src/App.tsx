@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import FormComponent from "./components/form/form.component";
+import { Drawer } from "./components/drawer/drawer.component";
+import { Title } from "./components/heading/title.component";
+import { Subtitle } from "./components/heading/subtitle.component";
+import { createClient } from "@supabase/supabase-js";
+
+const { REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_ANON_KEY } = process.env;
+
+const supabase = createClient(
+  REACT_APP_SUPABASE_URL as string,
+  REACT_APP_SUPABASE_ANON_KEY as string
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container mx-auto overflow-auto form-container">
+        <Title />
+        <Subtitle />
+        <FormComponent />
+      </div>
+      <Drawer supabaseInstance={supabase} />
+    </>
   );
 }
 
