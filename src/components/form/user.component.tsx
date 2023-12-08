@@ -10,8 +10,8 @@ export const User: FC<Props> = ({ handleInputChange, formData }) => {
   const { name, email } = formData;
 
   return (
-    <>
-      <div className="relative mb-6">
+    <div className="flex flex-col md:flex-row md:gap-2">
+      <div className="relative mb-6 flex-1">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
           <svg
             className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -33,7 +33,7 @@ export const User: FC<Props> = ({ handleInputChange, formData }) => {
           onChange={handleInputChange}
         />
       </div>
-      <div className="relative mb-6">
+      <div className="relative mb-6 flex-1">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
           <svg
             className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -56,6 +56,6 @@ export const User: FC<Props> = ({ handleInputChange, formData }) => {
           onChange={handleInputChange}
         />
       </div>
-    </>
+    </div>
   );
 };

@@ -47,9 +47,7 @@ const FormComponent: React.FC = () => {
   const handleAddRow = () => {
     const lastRow = formData.list[formData.list.length - 1];
 
-    // Check if the inputs of the previous row are filled
     if (lastRow && lastRow.name && lastRow.value) {
-      // Check if the sum of values is less than or equal to 65
       const sumOfValues = formData.list.reduce(
         (sum, row) => sum + (row.value ? Number(row.value) : 0),
         0
