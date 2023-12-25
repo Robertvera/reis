@@ -12,16 +12,7 @@ interface Props {
 }
 
 export const Drawer: FC<Props> = ({ supabaseInstance }) => {
-  const [isTooMuch, setIsTooMuch] = useState<boolean>(false);
   const { accPrice, formData } = useContext(AppContext);
-
-  useEffect(() => {
-    if (accPrice > 65 * 1.05) {
-      setIsTooMuch(true);
-    } else {
-      setIsTooMuch(false);
-    }
-  }, [accPrice, isTooMuch]);
 
   const handleClick = () => {
     if (accPrice < 65) {
@@ -49,19 +40,15 @@ export const Drawer: FC<Props> = ({ supabaseInstance }) => {
     <div className="fixed bottom-0 left-0 w-full h-20 bg-slate-300 dark:bg-slate-900  border-solid border-t-2 border-green-700 flex items-center">
       <div className="container mx-auto flex items-center justify-between">
         <span className="px-5 text-3xl text-gray-900 dark:text-yellow-200">
-          {isTooMuch
-            ? `T'has passat, recorda que el pressupost és de 65 €`
-            : `${accPrice} €`}
+          {`${accPrice} €`}
         </span>
-        {isTooMuch ? null : (
-          <button
-            type="button"
-            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-sm shadow-green-500/50 dark:shadow-sm dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            onClick={handleClick}
-          >
-            Enviar carta als reis
-          </button>
-        )}
+        <button
+          type="button"
+          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-sm shadow-green-500/50 dark:shadow-sm dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          onClick={handleClick}
+        >
+          Enviar carta als reis
+        </button>
       </div>
     </div>
   );

@@ -48,20 +48,11 @@ const FormComponent: React.FC = () => {
     const lastRow = formData.list[formData.list.length - 1];
 
     if (lastRow && lastRow.name && lastRow.value) {
-      const sumOfValues = formData.list.reduce(
-        (sum, row) => sum + (row.value ? Number(row.value) : 0),
-        0
-      );
-
-      if (sumOfValues <= 65) {
-        updateFormData({
-          ...formData,
-          list: [...formData.list, { name: "", value: NaN, link: "" }],
-        });
-        setWarning("");
-      } else {
-        setWarning("La suma del preu dels regals no pot excedir els 65 €");
-      }
+      updateFormData({
+        ...formData,
+        list: [...formData.list, { name: "", value: NaN, link: "" }],
+      });
+      setWarning("");
     } else {
       setWarning("Introdueix els detalls del regal abans d'afegir-ne un altre");
     }
